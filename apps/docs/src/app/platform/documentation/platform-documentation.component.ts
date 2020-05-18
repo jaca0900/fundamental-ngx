@@ -31,6 +31,7 @@ export class PlatformDocumentationComponent {
         { url: 'platform/select', name: 'Select' },
         { url: 'platform/search-field', name: 'Search Field' },
         { url: 'platform/split-menu-button', name: 'Split Menu Button' },
+        { url: 'platform/object-status', name: 'Object Status' },
     ];
 
     layouts = [];

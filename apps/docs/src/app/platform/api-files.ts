@@ -14,5 +14,6 @@ export const API_FILES = {
     radioGroup: ['RadioGroupComponent'],
     menuButton: ['MenuButtonComponent'],
     splitMenuButton: ['SplitMenuButtonComponent'],
-    infoLabel: ['InfoLabelComponent']
+    infoLabel: ['InfoLabelComponent'],
+    objectStatus: ['ObjectStatusComponent'],
 };
