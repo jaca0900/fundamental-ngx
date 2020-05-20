@@ -21,7 +21,7 @@ import { TimeI18n } from './i18n/time-i18n';
     styleUrls: ['./time.component.scss'],
     host: {
         '(blur)': 'onTouched()',
-        class: 'fd-time fd-has-display-block'
+        class: ''
     },
     providers: [
         {
@@ -34,6 +34,11 @@ import { TimeI18n } from './i18n/time-i18n';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TimeComponent implements OnChanges, ControlValueAccessor {
+
+    readonly hours: number[];
+    readonly minutes: number[];
+    readonly seconds: number[];
+
     /**
      * @Input When set to false, uses the 24 hour clock (hours ranging from 0 to 23)
      * and does not display a period control.
@@ -130,7 +135,8 @@ export class TimeComponent implements OnChanges, ControlValueAccessor {
         public timeI18nLabels: TimeI18nLabels,
         public timeI18n: TimeI18n,
         private changeDetRef: ChangeDetectorRef
-    ) {}
+    ) {
+    }
 
     /** @hidden */
     writeValue(time: TimeObject): void {
