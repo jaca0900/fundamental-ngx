@@ -3,7 +3,7 @@
     <button class="fd-button fd-button fd-button--transparent sap-icon--navigation-up-arrow" (click)="scrollUp()"></button>
     <div class="fd-time__wrapper" [ngClass]="{'fd-time__wrapper--active': active}">
         <ul class="fd-time__list" (scroll)="handleScroll($event)" #listElement>
-            <li class="fd-time__item" *ngFor="let row of rows">
+            <li class="fd-time__item" *ngFor="let row of rows" #timeItem>
                 <div class="fd-time__current-indicator" *ngIf="row === activeNumber"></div>
                 <span class="fd-time__unit">{{row}}</span>
             </li>
