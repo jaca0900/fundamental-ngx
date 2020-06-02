@@ -1,0 +1,10 @@
+<p>Reactive form Examples</p>
+<fdp-form-group [formGroup]="datePickerForm" (onSubmit)="save($event)">
+    <fdp-form-field id="datepicker">
+        <fdp-date-picker ></fdp-date-picker>
+    </fdp-form-field>
+
+    <fdp-form-field>
+        <button type="submit">Submit</button>
+    </fdp-form-field>
+</fdp-form-group>
