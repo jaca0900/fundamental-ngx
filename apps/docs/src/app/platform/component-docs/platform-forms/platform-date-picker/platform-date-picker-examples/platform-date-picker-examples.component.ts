@@ -1,24 +1,27 @@
-import { Component, DoCheck } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { FdDate } from '@fundamental-ngx/core';
 
 @Component({
     selector: 'fdp-platform-date-picker-example',
     templateUrl: './platform-date-picker-example.component.html'
 })
-export class PlatformDatePickerExampleComponent implements DoCheck {
-    public birthday: string = '';
+export class PlatformDatePickerExampleComponent {
+    public birthday: FdDate;
 
     public datePickerForm = new FormGroup({
-        example1: new FormControl({ value: '', disabled: false })
     });
 
-    constructor() {}
+    public data = {
+        birthday: this.birthday,
+        examdate: {
+            start: FdDate.getToday(),
+            end: FdDate.getToday().nextDay()
+        }
+    };
+    constructor() { }
 
-    ngDoCheck(): void {
-        console.log('datePickerForm: ', this.datePickerForm);
-    }
-
-    public save(): void {
-        console.log('save datePickerForm: ');
+    public save(value: any): void {
+        alert('Form Value: ' + value);
     }
 }

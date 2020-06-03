@@ -1,4 +1,4 @@
-import { NgControl, NgForm } from '@angular/forms';
+import { NgControl, NgForm, Validators } from '@angular/forms';
 import {
     ChangeDetectorRef,
     ChangeDetectionStrategy,
@@ -8,11 +8,13 @@ import {
     Optional,
     Output,
     Self,
-    ViewEncapsulation
+    ViewEncapsulation,
+    ViewChild
 } from '@angular/core';
 import {
     CalendarType,
     CalendarYearGrid,
+    DatePickerComponent as CoreDatePickerComponent,
     DaysOfWeek,
     FdCalendarView,
     FdDate,
@@ -31,8 +33,15 @@ import { BaseInput } from '../base.input';
     providers: [{ provide: FormFieldControl, useExisting: DatePickerComponent, multi: true }]
 })
 export class DatePickerComponent extends BaseInput {
-    date = FdDate.getToday();
+    /**
+     * core datepicker as child
+     */
+    @ViewChild(CoreDatePickerComponent)
+    _child: CoreDatePickerComponent
     
+    /**
+     * datepicker value set as controler value
+     */
     @Input()
     get value(): any {
         return super.getValue();
@@ -47,10 +56,6 @@ export class DatePickerComponent extends BaseInput {
     @Input()
     type: CalendarType = 'single';
 
-    /** Date picker input placeholder string */
-    @Input()
-    placeholder: string = 'mm/dd/yyyy';
-
     /** Date Format displayed on input. See more options: https://angular.io/api/common/DatePipe */
     @Input()
     format: string = 'MM/dd/yyyy';
@@ -58,10 +63,6 @@ export class DatePickerComponent extends BaseInput {
     /** Locale for date pipe. See more https://angular.io/guide/i18n */
     @Input()
     locale: string;
-
-    /** Whether this is the compact input date picker */
-    @Input()
-    compact: boolean = false;
 
     /** The currently selected CalendarDay model */
     @Input()
@@ -108,10 +109,6 @@ export class DatePickerComponent extends BaseInput {
      */
     @Input()
     placement: Placement = 'bottom-start';
-
-    /** Whether the date picker is disabled. */
-    @Input()
-    disabled: boolean;
 
     /** Defines if date picker should be closed after date choose */
     @Input()
@@ -180,10 +177,10 @@ export class DatePickerComponent extends BaseInput {
     public readonly activeViewChange: EventEmitter<FdCalendarView> = new EventEmitter<FdCalendarView>();
 
     /** @hidden */
-    onChange: any = (selected: any) => {};
+    onChange: any = (selected: any) => { };
 
     /** @hidden */
-    onTouched: any = () => {};
+    onTouched: any = () => { };
 
     /**
      * Function used to disable certain dates in the calendar.
@@ -220,7 +217,36 @@ export class DatePickerComponent extends BaseInput {
         super(_cd, ngControl, ngForm);
     }
 
-    writeValue(value: any): void {
-        super.writeValue(value);
+    writeValue(value: FdDate | FdRangeDate): void {
+        let finalValue = value;
+        if (this._child && !this._child.isModelValid()) {
+            finalValue = null
+        }
+        super.writeValue(finalValue);
+    }
+
+    setDisabledState(isDisabled: boolean) {
+        if (this.ngControl.disabled !== isDisabled) {
+            if (isDisabled) {
+                this.ngControl.control.disable()
+            }
+        }
+        super.setDisabledState(isDisabled);
+    }
+
+    public handleDateChange(): void {
+        this.onTouched();
+    }
+
+    public handleSelectedDateChange(fdDate: FdDate): void {
+        this.selectedDateChange.emit(fdDate);
+    }
+
+    public handleSelectedRangeDateChange(fdRangeDate: FdRangeDate): void {
+        this.selectedRangeDateChange.emit(fdRangeDate);
+    }
+
+    public handleActiveViewChange(fdCalendarView: FdCalendarView): void {
+        this.activeViewChange.emit(fdCalendarView);
     }
 }

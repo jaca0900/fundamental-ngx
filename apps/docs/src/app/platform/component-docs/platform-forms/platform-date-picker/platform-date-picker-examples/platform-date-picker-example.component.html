@@ -1,10 +1,34 @@
-<p>Reactive form Examples</p>
-<fdp-form-group [formGroup]="datePickerForm" (onSubmit)="save($event)">
-    <fdp-form-field id="datepicker">
-        <fdp-date-picker ></fdp-date-picker>
+<fdp-form-group #ffg [formGroup]="datePickerForm" [object]="data" (ngSubmit)="save(ffg)" [multiLayout]="true">
+    <fdp-form-field #ffl1 id="birthday" zone="zLeft" rank="1" [required]="true" [placeholder]="'enter your birthday'">
+        <fdp-date-picker [id]="'birthday'" [name]="'birthday'" [type]="'single'" [format]="'MM/dd/yyyy'"
+            [contentDensity]="'compact'" [formControl]="ffl1.formControl">
+            Birthday:
+        </fdp-date-picker>
     </fdp-form-field>
+
+    <fdp-form-field #ffl2 [id]="'examdate'" zone="zRight" rank="1" [required]="true">
+        <fdp-date-picker [id]="'examdate'" [name]="'examdate'" [type]="'range'" [allowNull]="false"
+            [placeholder]="'Enter your exam date'" [formControl]="ffl2.formControl"> Exam
+            day:
+        </fdp-date-picker>
+    </fdp-form-field>
+
+    <fdp-form-field #ffl3 [id]="'practicledate'" zone="zLeft" rank="1" [placeholder]="'Enter Practicle dates'">
+        <fdp-date-picker [id]="'practicledate'" [name]="'practicledate'" [type]="'range'"
+            [formControl]="ffl3.formControl" [placeholder]="'mm/dd/yyyy'" [disabled]="true"> Practicle day:
+        </fdp-date-picker>
+    </fdp-form-field>
+
+
+    <ng-template #i18n let-errors>
+        <ng-container *ngIf="errors.required">
+            <p>Value is required</p>
+        </ng-container>
+    </ng-template>
 
     <fdp-form-field>
         <button type="submit">Submit</button>
     </fdp-form-field>
 </fdp-form-group>
+
+<p>Value: {{ datePickerForm.value | json }}</p>
