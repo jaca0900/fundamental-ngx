@@ -1,29 +1,22 @@
-import { NgControl, NgForm, Validators } from '@angular/forms';
-import {
-    ChangeDetectorRef,
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    Input,
-    Optional,
-    Output,
-    Self,
-    ViewEncapsulation,
-    ViewChild
-} from '@angular/core';
-import {
-    CalendarType,
-    CalendarYearGrid,
-    DatePickerComponent as CoreDatePickerComponent,
-    DaysOfWeek,
-    FdCalendarView,
-    FdDate,
-    FdRangeDate,
-    SpecialDayRule
-} from '@fundamental-ngx/core';
+import { NgControl, NgForm } from '@angular/forms';
+import { ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Optional, Output, Self } from '@angular/core';
+import { ViewEncapsulation, ViewChild } from '@angular/core';
+import { CalendarType, CalendarYearGrid, DatePickerComponent as CoreDatePickerComponent } from '@fundamental-ngx/core';
+import { DaysOfWeek, FdCalendarView, FdDate, FdRangeDate, SpecialDayRule } from '@fundamental-ngx/core';
 import { Placement } from 'popper.js';
 import { FormFieldControl } from '../form-control';
 import { BaseInput } from '../base.input';
+
+/**
+ * Checkbox implementation based on the
+ * https://github.com/SAP/fundamental-ngx/wiki/Platform:-Date-Picker-Component-Technical-Design
+ * documents.
+ *
+ * Core datePicker is wrapped here to work with platform form. Core datepicker properties
+ * and Event has been exposed in the same way.
+ */
+
 @Component({
     selector: 'fdp-date-picker',
     templateUrl: './date-picker.component.html',
@@ -37,8 +30,8 @@ export class DatePickerComponent extends BaseInput {
      * core datepicker as child
      */
     @ViewChild(CoreDatePickerComponent)
-    _child: CoreDatePickerComponent
-    
+    coreDatePicker: CoreDatePickerComponent;
+
     /**
      * datepicker value set as controler value
      */
@@ -176,12 +169,6 @@ export class DatePickerComponent extends BaseInput {
     @Output()
     public readonly activeViewChange: EventEmitter<FdCalendarView> = new EventEmitter<FdCalendarView>();
 
-    /** @hidden */
-    onChange: any = (selected: any) => { };
-
-    /** @hidden */
-    onTouched: any = () => { };
-
     /**
      * Function used to disable certain dates in the calendar.
      * @param fdDate FdDate
@@ -219,22 +206,20 @@ export class DatePickerComponent extends BaseInput {
 
     writeValue(value: FdDate | FdRangeDate): void {
         let finalValue = value;
-        if (this._child && !this._child.isModelValid()) {
-            finalValue = null
+        if (this.coreDatePicker && !this.coreDatePicker.isModelValid()) {
+            finalValue = null;
         }
         super.writeValue(finalValue);
     }
 
     setDisabledState(isDisabled: boolean) {
-        if (this.ngControl.disabled !== isDisabled) {
-            if (isDisabled) {
-                this.ngControl.control.disable()
-            }
+        if (this.ngControl.disabled !== isDisabled && isDisabled) {
+            this.ngControl.control.disable();
         }
         super.setDisabledState(isDisabled);
     }
 
-    public handleDateChange(): void {
+    public handleDateChange(event: any): void {
         this.onTouched();
     }
 
