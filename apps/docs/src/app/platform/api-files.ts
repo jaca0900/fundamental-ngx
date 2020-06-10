@@ -9,10 +9,11 @@ export const API_FILES = {
     button: ['buttoncomponent'],
     checkbox: ['CheckboxComponent'],
     infoLabel: ['InfoLabelComponent'],
+    input: ['InputComponent'],
     link: ['LinkComponent'],
     menu: ['MenuComponent', 'MenuItemComponent', 'MenuTriggerDirective'],
     menuButton: ['MenuButtonComponent'],
     radioGroup: ['RadioGroupComponent'],
     searchField: ['SearchFieldComponent'],
-    splitMenuButton: ['SplitMenuButtonComponent']
+    splitMenuButton: ['SplitMenuButtonComponent'],
 };
