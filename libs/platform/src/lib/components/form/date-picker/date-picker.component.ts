@@ -20,7 +20,6 @@ import { BaseInput } from '../base.input';
 @Component({
     selector: 'fdp-date-picker',
     templateUrl: './date-picker.component.html',
-    styleUrls: ['./date-picker.component.scss'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{ provide: FormFieldControl, useExisting: DatePickerComponent, multi: true }]
@@ -205,11 +204,8 @@ export class DatePickerComponent extends BaseInput {
     }
 
     writeValue(value: FdDate | FdRangeDate): void {
-        let finalValue = value;
-        if (this.coreDatePicker && !this.coreDatePicker.isModelValid()) {
-            finalValue = null;
-        }
-        super.writeValue(finalValue);
+        super.writeValue(value);
+        this._cd.detectChanges();
     }
 
     setDisabledState(isDisabled: boolean) {
@@ -219,8 +215,14 @@ export class DatePickerComponent extends BaseInput {
         super.setDisabledState(isDisabled);
     }
 
-    public handleDateChange(event: any): void {
+    public handleDateChange(value: FdDate | FdRangeDate): void {
         this.onTouched();
+
+        let finalValue = value;
+        if (this.coreDatePicker && !this.coreDatePicker.isModelValid()) {
+            finalValue = null;
+        }
+        this.value = finalValue;
     }
 
     public handleSelectedDateChange(fdDate: FdDate): void {

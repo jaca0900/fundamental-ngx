@@ -130,9 +130,11 @@ export class CustomI18nLabels extends CalendarI18nLabels {
         <fdp-button [compact]="true" (buttonClicked)="setFrench()" [type]="isSelected('fr') ? 'emphasized' : ''"
             >French
         </fdp-button>
+        |
         <fdp-button [compact]="true" (buttonClicked)="setGerman()" [type]="isSelected('de') ? 'emphasized' : ''"
             >German
         </fdp-button>
+        |
         <fdp-button [compact]="true" (buttonClicked)="setBulgarian()" [type]="isSelected('bg') ? 'emphasized' : ''"
             >Bulgarian
         </fdp-button>

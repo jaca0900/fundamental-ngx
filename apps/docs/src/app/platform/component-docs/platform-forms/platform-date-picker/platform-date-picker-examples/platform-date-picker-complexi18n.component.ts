@@ -44,15 +44,28 @@ export class CustomI18nMomentCalendar extends CalendarI18n {
     selector: 'fdp-date-picker-complex-i18n-example',
     template: `
         <label fd-form-label>Languages</label>
-        <fdp-button [compact]="true" (buttonClicked)="setLocale('en-gb')" [type]="isSelected('en-gb') ? 'emphasized' : ''"
+        <fdp-button
+            [compact]="true"
+            (buttonClicked)="setLocale('en-gb')"
+            [type]="isSelected('en-gb') ? 'emphasized' : ''"
             >English
         </fdp-button>
-        <fdp-button [compact]="true" (buttonClicked)="setLocale('fr')" [type]="isSelected('fr') ? 'emphasized' : ''">French</fdp-button>
-        <fdp-button [compact]="true" (buttonClicked)="setLocale('de')" [type]="isSelected('de') ? 'emphasized' : ''">German</fdp-button>
+        |
+        <fdp-button [compact]="true" (buttonClicked)="setLocale('fr')" [type]="isSelected('fr') ? 'emphasized' : ''"
+            >French</fdp-button
+        >
+        |
+        <fdp-button [compact]="true" (buttonClicked)="setLocale('de')" [type]="isSelected('de') ? 'emphasized' : ''"
+            >German</fdp-button
+        >
+        |
         <fdp-button [compact]="true" (buttonClicked)="setLocale('bg')" [type]="isSelected('bg') ? 'emphasized' : ''"
             >Bulgarian
         </fdp-button>
-        <fdp-button [compact]="true" (buttonClicked)="setLocale('pl')" [type]="isSelected('pl') ? 'emphasized' : ''">Polish</fdp-button>
+        |
+        <fdp-button [compact]="true" (buttonClicked)="setLocale('pl')" [type]="isSelected('pl') ? 'emphasized' : ''"
+            >Polish</fdp-button
+        >
 
         <br />
         <fdp-form-group [multiLayout]="true">
