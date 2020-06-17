@@ -9,7 +9,7 @@ import { FormFieldControl } from '../form-control';
 import { BaseInput } from '../base.input';
 
 /**
- * Checkbox implementation based on the
+ * Date-Picker implementation based on the
  * https://github.com/SAP/fundamental-ngx/wiki/Platform:-Date-Picker-Component-Technical-Design
  * documents.
  *

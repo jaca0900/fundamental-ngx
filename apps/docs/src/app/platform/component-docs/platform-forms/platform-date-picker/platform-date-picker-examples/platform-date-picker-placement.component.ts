@@ -11,15 +11,14 @@ import { FormGroup } from '@angular/forms';
         <fdp-form-group #ffg [formGroup]="datePickerForm" (onSubmit)="save(ffg)" [multiLayout]="true">
             <fdp-form-field
                 #ffl1
-                id="birthday"
+                [id]="'birthday'"
                 zone="zLeft"
                 rank="1"
                 [required]="true"
                 [label]="'Placement is Top End:'"
-                [placeholder]="'enter your birthday'"
+                [placeholder]="'Enter your birthday'"
             >
                 <fdp-date-picker
-                    [id]="'birthday'"
                     [name]="'birthday'"
                     [type]="'single'"
                     [format]="'dd/MM/yyyy'"
@@ -33,15 +32,14 @@ import { FormGroup } from '@angular/forms';
 
             <fdp-form-field
                 #ffl2
-                id="birthday1"
+                [id]="'birthday1'"
                 zone="zRight"
                 rank="1"
                 [required]="true"
                 [label]="'Placement is Bottom End:'"
-                [placeholder]="'enter your birthday'"
+                [placeholder]="'Enter your birthday'"
             >
                 <fdp-date-picker
-                    [id]="'birthday1'"
                     [name]="'birthday1'"
                     [type]="'single'"
                     [format]="'dd/MM/yyyy'"
@@ -55,15 +53,14 @@ import { FormGroup } from '@angular/forms';
 
             <fdp-form-field
                 #ffl3
-                id="birthday2"
+                [id]="'birthday2'"
                 zone="zLeft"
                 rank="2"
                 [required]="true"
                 [label]="'Placement is Top Start:'"
-                [placeholder]="'enter your birthday'"
+                [placeholder]="'Enter your birthday'"
             >
                 <fdp-date-picker
-                    [id]="'birthday2'"
                     [name]="'birthday2'"
                     [type]="'single'"
                     [format]="'dd/MM/yyyy'"
@@ -77,15 +74,14 @@ import { FormGroup } from '@angular/forms';
 
             <fdp-form-field
                 #ffl4
-                id="birthday3"
+                [id]="'birthday3'"
                 zone="zRight"
                 rank="2"
                 [required]="true"
                 [label]="'Placement is Bottom Start:'"
-                [placeholder]="'enter your birthday'"
+                [placeholder]="'Enter your birthday'"
             >
                 <fdp-date-picker
-                    [id]="'birthday3'"
                     [name]="'birthday3'"
                     [type]="'single'"
                     [format]="'dd/MM/yyyy'"
@@ -95,9 +91,6 @@ import { FormGroup } from '@angular/forms';
                     [formControl]="ffl4.formControl"
                 >
                 </fdp-date-picker>
-            </fdp-form-field>
-            <fdp-form-field>
-                <button type="submit">Submit</button>
             </fdp-form-field>
 
             <ng-template #i18n let-errors>

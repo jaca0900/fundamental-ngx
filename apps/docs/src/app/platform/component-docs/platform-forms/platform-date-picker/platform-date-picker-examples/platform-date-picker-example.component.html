@@ -1,15 +1,14 @@
 <fdp-form-group #ffg [formGroup]="datePickerForm" [object]="data" (onSubmit)="save(ffg)" [multiLayout]="true">
     <fdp-form-field
         #ffl1
-        id="birthday"
+        [id]="'birthday'"
         zone="zLeft"
         rank="1"
         [required]="true"
-        [placeholder]="'enter your birthday'"
+        [placeholder]="'Enter your birthday'"
         [label]="'Birth Date:'"
     >
         <fdp-date-picker
-            [id]="'birthday'"
             [name]="'birthday'"
             [type]="'single'"
             [format]="'dd/MM/yyyy'"
@@ -20,22 +19,20 @@
         </fdp-date-picker>
     </fdp-form-field>
 
-    <fdp-form-field #ffl2 id="examdate" zone="zRight" rank="1" [required]="true" [label]="'Exam Date:'">
+    <fdp-form-field #ffl2 [id]="'examdate'" zone="zRight" rank="1" [required]="true" [label]="'Exam Date:'">
         <fdp-date-picker
-            [id]="'examdate'"
             [name]="'examdate'"
             [type]="'single'"
             [format]="'MM/dd/yyyy'"
             [allowNull]="false"
-            [placeholder]="'enter your Exam dates'"
+            [placeholder]="'Enter your Exam dates'"
             [formControl]="ffl2.formControl"
         >
         </fdp-date-picker>
     </fdp-form-field>
 
-    <fdp-form-field #ffl3 id="holiday" zone="zLeft" rank="2" [required]="true" [label]="'Holiday:'">
+    <fdp-form-field #ffl3 [id]="'holiday'" zone="zLeft" rank="2" [required]="true" [label]="'Holiday:'">
         <fdp-date-picker
-            [id]="'holiday'"
             [name]="'holiday'"
             [type]="'range'"
             [format]="'MM/dd/yyyy'"
@@ -47,9 +44,8 @@
         </fdp-date-picker>
     </fdp-form-field>
 
-    <fdp-form-field #ffl4 id="journeydate" zone="zRight" rank="3" [required]="true" [label]="'Journey Date:'">
+    <fdp-form-field #ffl4 [id]="'journeydate'" zone="zRight" rank="3" [required]="true" [label]="'Journey Date:'">
         <fdp-date-picker
-            [id]="'journeydate'"
             [name]="'journeydate'"
             [type]="'range'"
             [format]="'MM/dd/yyyy'"
@@ -62,7 +58,7 @@
     </fdp-form-field>
     <fdp-form-field
         #ffl5
-        id="disableddate"
+        [id]="'disableddate'"
         zone="zLeft"
         rank="4"
         [required]="true"
@@ -70,7 +66,6 @@
         [disabled]="true"
     >
         <fdp-date-picker
-            [id]="'disableddate'"
             [name]="'disableddate'"
             [type]="'single'"
             [format]="'dd/MM/yyyy'"
@@ -79,10 +74,6 @@
             [formControl]="ffl5.formControl"
         >
         </fdp-date-picker>
-    </fdp-form-field>
-
-    <fdp-form-field>
-        <button type="submit">Submit</button>
     </fdp-form-field>
 
     <ng-template #i18n let-errors>

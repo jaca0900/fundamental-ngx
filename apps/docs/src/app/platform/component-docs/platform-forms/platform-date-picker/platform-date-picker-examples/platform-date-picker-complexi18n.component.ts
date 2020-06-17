@@ -70,11 +70,11 @@ export class CustomI18nMomentCalendar extends CalendarI18n {
         <br />
         <fdp-form-group [multiLayout]="true">
             <fdp-form-field
-                id="birthday"
+                [id]="'birthday'"
                 zone="zLeft"
                 rank="1"
                 [label]="'Date Format:'"
-                [placeholder]="'enter date format'"
+                [placeholder]="'Enter date format'"
             >
                 <fd-input-group
                     id="docs-date-picker-format"
@@ -94,9 +94,14 @@ export class CustomI18nMomentCalendar extends CalendarI18n {
                 </fd-form-message>
             </fdp-form-field>
 
-            <fdp-form-field id="date" zone="zRight" rank="1" [label]="'Selected:'" [placeholder]="'dd/MM/yyyy'">
+            <fdp-form-field
+                [id]="'datepicker'"
+                zone="zRight"
+                rank="1"
+                [label]="'Selected:'"
+                [placeholder]="'dd/MM/yyyy'"
+            >
                 <fdp-date-picker
-                    [id]="'datepicker'"
                     [name]="'datepicker'"
                     [format]="actualFormat"
                     [locale]="actualLocale"
