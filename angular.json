@@ -23,18 +23,13 @@
                         "main": "apps/docs/src/main.ts",
                         "polyfills": "apps/docs/src/polyfills.ts",
                         "tsConfig": "apps/docs/tsconfig.app.json",
-                        "assets": [
-                            "apps/docs/src/favicon.ico",
-                            "apps/docs/src/assets"
-                        ],
+                        "assets": ["apps/docs/src/favicon.ico", "apps/docs/src/assets"],
                         "styles": [
                             "node_modules/fundamental-styles/dist/icon.css",
                             "apps/docs/src/fd-typedoc/assets/css/main.scss",
                             "apps/docs/src/styles.scss"
                         ],
-                        "scripts": [
-                            "node_modules/marked/lib/marked.js"
-                        ],
+                        "scripts": ["node_modules/marked/lib/marked.js"],
                         "es5BrowserSupport": true,
                         "showCircularDependencies": false
                     },
@@ -100,6 +95,14 @@
                                     "with": "apps/docs/src/environments/environment.prod.ts"
                                 }
                             ]
+                        },
+                        "ar": {
+                            "aot": true,
+                            "outputPath": "dist/apps/docs/translations/platform/ar",
+                            "i18nFile": "apps/docs/src/app/platform/component-docs/locale/messages.ar.xlf",
+                            "i18nFormat": "xlf",
+                            "i18nLocale": "ar",
+                            "i18nMissingTranslation": "error"
                         }
                     }
                 },
@@ -111,6 +114,9 @@
                     "configurations": {
                         "production": {
                             "browserTarget": "docs:build:production"
+                        },
+                        "ar": {
+                            "browserTarget": "docs:build:ar"
                         },
                         "hmr": {
                             "browserTarget": "docs:build:hmr"
@@ -126,14 +132,8 @@
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "tsConfig": [
-                            "apps/docs/tsconfig.app.json",
-                            "apps/docs/tsconfig.spec.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**",
-                            "!apps/docs/**"
-                        ]
+                        "tsConfig": ["apps/docs/tsconfig.app.json", "apps/docs/tsconfig.spec.json"],
+                        "exclude": ["**/node_modules/**", "!apps/docs/**"]
                     }
                 },
                 "test": {
@@ -148,10 +148,7 @@
                             "apps/docs/src/styles.scss"
                         ],
                         "scripts": [],
-                        "assets": [
-                            "apps/docs/src/favicon.ico",
-                            "apps/docs/src/assets"
-                        ]
+                        "assets": ["apps/docs/src/favicon.ico", "apps/docs/src/assets"]
                     }
                 }
             }
@@ -177,10 +174,7 @@
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
                         "tsConfig": "apps/docs-e2e/tsconfig.e2e.json",
-                        "exclude": [
-                            "**/node_modules/**",
-                            "!apps/docs/**"
-                        ]
+                        "exclude": ["**/node_modules/**", "!apps/docs/**"]
                     }
                 }
             }
@@ -206,14 +200,8 @@
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "tsConfig": [
-                            "libs/core/tsconfig.lib.json",
-                            "libs/core/tsconfig.spec.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**",
-                            "!apps/docs/**"
-                        ]
+                        "tsConfig": ["libs/core/tsconfig.lib.json", "libs/core/tsconfig.spec.json"],
+                        "exclude": ["**/node_modules/**", "!apps/docs/**"]
                     }
                 },
                 "test": {
@@ -252,14 +240,8 @@
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "tsConfig": [
-                            "libs/platform/tsconfig.lib.json",
-                            "libs/platform/tsconfig.spec.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**",
-                            "!libs/platform/**"
-                        ]
+                        "tsConfig": ["libs/platform/tsconfig.lib.json", "libs/platform/tsconfig.spec.json"],
+                        "exclude": ["**/node_modules/**", "!libs/platform/**"]
                     }
                 },
                 "test": {

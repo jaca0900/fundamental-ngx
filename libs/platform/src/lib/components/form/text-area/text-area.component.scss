@@ -1,0 +1,37 @@
+.fdp-textarea-custom-resize {
+    width: auto;
+    height: auto;
+    min-width: 0rem;
+    min-height: 0rem;
+}
+
+.fdp-textarea-normal-size {
+    max-height: inherit;
+    width: auto;
+    min-width: 0rem;
+}
+
+/* textarea counter in fund styles is used in the structure
+```html
+<fd-form-input-message-group>
+        <textarea fd-form-control id="textarea-53" placeholder="Field placeholder text" [state]="'error'"></textarea>
+        <fd-form-message [type]="'error'"
+            >This is the error message popover
+        </fd-form-message>
+</fd-form-input-message-group>
+<div class="fd-textarea-counter">12 characters remaining</div>
+```
+Platform forms cannot use the above structure because our `fdp-input-message-group` is part of the `fdp-form-field` template
+that contains `fdp-textarea` and the form message. Also, our `fdp-textarea` needs to be tightly bound to the counter message, hence
+`fd-textarea-counter` class will have to be used within `fdp-textarea`, that is within `fdp-input-message-group` ultimately.
+Since this is a different structure from fund-styles, there is a gap visible for error messages when counter message is displayed.
+The following styles fixes that gap issue.
+*/
+.fd-textarea-counter {
+    display: inline;
+    float: right;
+
+    [dir='rtl'] & {
+        float: left;
+    }
+}
