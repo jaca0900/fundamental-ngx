@@ -37,6 +37,7 @@ export const ROUTES: Routes = [
                 loadChildren: () =>
                     import('./component-docs/platform-forms/platform-date-picker/platform-date-picker.module').then(
                         (m) => m.PlatformDatePickerDocsModule
+                    )
             },
             {
                 path: 'link',
@@ -79,8 +80,10 @@ export const ROUTES: Routes = [
             {
                 path: 'info-label',
                 loadChildren: () =>
-                    import('./component-docs/platform-info-label/platform-info-label-docs-module').then((m) => m.PlatformInfoLabelDocsModule)
-            },
+                    import('./component-docs/platform-info-label/platform-info-label-docs-module').then(
+                        (m) => m.PlatformInfoLabelDocsModule
+                    )
+            }
         ]
     }
 ];
