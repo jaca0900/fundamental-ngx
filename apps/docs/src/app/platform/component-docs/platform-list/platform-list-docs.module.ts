@@ -15,11 +15,10 @@ import {
     PlatformListWithSingleSelectionExampleComponent
 } from './platform-list-examples/platform-list-example.component';
 import { PlatformListModule, PlatformButtonModule } from '@fundamental-ngx/platform';
-import { PlatformListBorderLessExampleComponent } from './platform-list-examples/Platform-List-Border-Less-example.component';
+import { PlatformListBorderLessExampleComponent } from './platform-list-examples/platform-list-border-Less-example.component';
 import { PlatformListWithGroupHeaderExampleComponent } from './platform-list-examples/platform-list-with-group-header-example.component';
 import { PlatformListWithInfiniteScrollExampleComponent } from './platform-list-examples/platform-list-with-infinite-scroll-example.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-
 
 
 const routes: Routes = [

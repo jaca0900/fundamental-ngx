@@ -50,12 +50,5 @@ describe('ListComponent', () => {
         const listElement = fixture.debugElement.query(By.css('ul'));
         expect(listElement.nativeElement.classList).toContain('fd-list--no-border');
     });
-
-    it('list item should byline', () => {
-        component.hasByLine = true;
-        fixture.detectChanges();
-        const listElement = fixture.debugElement.nativeElement.querySelector('li');
-        expect(listElement.classList).toContain('fd-list--byline');
-    });
 });
 
