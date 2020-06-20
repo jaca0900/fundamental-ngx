@@ -14,7 +14,7 @@ import {
     PlatformStandardListItemWithSingleSelectionExampleComponent
 } from './platform-standard-list-item-examples/platform-standard-list-item-example.component';
 import { PlatformListModule, PlatformButtonModule } from '@fundamental-ngx/platform';
-import { PlatformStandardListItemBorderLessExampleComponent } from './platform-standard-list-item-examples/platform-standard-list-item-border-Less-example.component';
+import { PlatformStandardListItemBorderLessExampleComponent } from './platform-standard-list-item-examples/platform-standard-list-item-border-less-example.component';
 import { PlatformStandardListItemtWithGroupHeaderExampleComponent } from './platform-standard-list-item-examples/platform-standard-list-item-with-group-header-example.component';
 
 
