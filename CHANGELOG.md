@@ -2,11 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-rc.0"></a>
+# [1.0.0-rc.0](https://github.com/SAP/fundamental-ngx/compare/v0.19.0...v1.0.0-rc.0) (2020-06-23)
+
+
+### Bug Fixes
+
+* manual remove 1.0.0-rc.0 ([#2738](https://github.com/SAP/fundamental-ngx/issues/2738)) ([8eb33ce](https://github.com/SAP/fundamental-ngx/commit/8eb33ce))
 
 
 ### Features
 
 * **select:** Complete refactoring based on material common behavior ([#2619](https://github.com/SAP/fundamental-ngx/issues/2619)) ([63af6c6](https://github.com/SAP/fundamental-ngx/commit/63af6c6))
+
+
+### BREAKING CHANGES
+
+* **select:** This PR also introduces BREAKING CHANGE as binding `[closeOnOutsideClick]` was removed. CDK handles all this natively. This binding was specific to Popover functionality.
 
 
 
