@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { InputComponent } from './input.component';
-import { FdpFormGroupModule } from '@fundamental-ngx/platform';
 import { CommonModule } from '@angular/common';
 import { FormModule as FdFormModule } from '@fundamental-ngx/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule as coreFormModule} from '@angular/forms';
+import { FdpFormGroupModule } from '../form-group/fdp-form.module';
 
 @NgModule({
     declarations: [
@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
     imports: [
         CommonModule,
         FdpFormGroupModule,
-        FormsModule,
+        coreFormModule,
         FdFormModule
     ],
     exports: [
