@@ -344,10 +344,7 @@ export class TextAreaComponent extends BaseInput implements AfterViewChecked {
      * get the updated state when character count breaches `maxLength`
      */
     getUpdatedState(): string {
-        if (
-            ((this.textareaElement && this.textareaElement.nativeElement.value.length) ||
-                (this.value && this.value.length)) > this.maxLength
-        ) {
+        if (this._getContentLength() > this.maxLength) {
             this.hasTextExceeded = true; // set flag for error message to also change accordingly
             this.counterExcessOrRemaining = this.excessText;
 
@@ -357,6 +354,18 @@ export class TextAreaComponent extends BaseInput implements AfterViewChecked {
         this.counterExcessOrRemaining = this.remainingText;
 
         return this.status as string; // return any other errors found by parent form field
+    }
+
+    /** @hidden get the length of the textarea content */
+    private _getContentLength(): number {
+        let contentLength;
+        if (this.textareaElement) {
+            contentLength = this.textareaElement.nativeElement.value.length;
+        }
+        if (this.value) {
+            contentLength = this.value.length;
+        }
+        return contentLength;
     }
 
     /** @hidden get the total height including borders and scroll height */
